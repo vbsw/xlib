@@ -12,6 +12,7 @@ package xlib
 // #cgo LDFLAGS: -lX11
 // #include <stdlib.h>
 // #include <X11/Xlib.h>
+// #include "xlib.h"
 import "C"
 import (
 	"unsafe"
@@ -19,6 +20,7 @@ import (
 
 type Display C.Display
 type Screen C.Screen
+type Window C.Window
 
 func strConcat ( a []interface{} ) string {
 	str := ""
@@ -86,5 +88,37 @@ func XHeightOfScreen ( screen *Screen ) int {
 	screenC := (*C.Screen)(screen)
 	height := C.XHeightOfScreen(screenC)
 	return int(height)
+}
+
+func XDefaultScreenOfDisplay ( display *Display ) *Screen {
+	displayC := (*C.Display)(display)
+	defaultScreen := C.XDefaultScreenOfDisplay(displayC)
+	return (*Screen)(defaultScreen)
+}
+
+func XRootWindowOfScreen ( screen *Screen ) Window {
+	screenC := (*C.Screen)(screen)
+	rootWindow := C.XRootWindowOfScreen(screenC)
+	return Window(rootWindow)
+}
+
+func XCreateSimpleWindow ( display *Display, parent Window, x, y int, width, height, borderWidth uint, border, background uint64) Window {
+	displayC := (*C.Display)(display)
+	windowC := (C.Window)(parent)
+	xC := C.int(x)
+	yC := C.int(y)
+	widthC := C.uint(width)
+	heightC := C.uint(height)
+	borderWidthC := C.uint(borderWidth)
+	borderC := C.ulong(border)
+	backgroundC := C.ulong(background)
+	window := C.XCreateSimpleWindow(displayC, windowC, xC, yC, widthC, heightC, borderWidthC, borderC, backgroundC)
+	return Window(window)
+}
+
+func XMapWindow ( display *Display, window Window) {
+	displayC := (*C.Display)(display)
+	windowC := (C.Window)(window)
+	C.XMapWindow(displayC, windowC)
 }
 
