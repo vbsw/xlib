@@ -3,7 +3,7 @@
 [![GoDoc](https://godoc.org/github.com/vbsw/xlib?status.svg)](https://godoc.org/github.com/vbsw/xlib)
 
 ## About
-Xlib Binding is a binding for the programming language Go of Xlib (version 11, release 6.7).
+Xlib Binding is a binding of Xlib (version 11, release 6.7) for the programming language Go.
 
 Xlib Binding is published at <https://github.com/vbsw/xlib>.
 

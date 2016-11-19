@@ -5,7 +5,7 @@
 //        http://www.boost.org/LICENSE_1_0.txt)
 
 
-// Xlib binding for version 11, release 6.7.
+// Binding of Xlib (version 11, release 6.7).
 package xlib
 
 
