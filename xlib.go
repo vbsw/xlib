@@ -122,3 +122,10 @@ func XMapWindow ( display *Display, window Window) {
 	C.XMapWindow(displayC, windowC)
 }
 
+func XSelectInput ( display *Display, window Window, eventMask int64) {
+	displayC := (*C.Display)(display)
+	windowC := (C.Window)(window)
+	eventMaskC := (C.long)(eventMask)
+	C.XSelectInput ( displayC, windowC, eventMaskC )
+}
+
