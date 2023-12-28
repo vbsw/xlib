@@ -139,3 +139,41 @@ func XGrabKey(display *Display, keycode int, modifiers int, grab_window Window, 
 	return int(status)
 
 }
+
+func XRaiseWindow(display *Display, window Window) {
+	displayC := (*C.Display)(display)
+	windowC := (C.Window)(window)
+	C.XRaiseWindow(displayC, windowC)
+}
+
+func XGetWindowAttributes(display *Display, window Window) *C.XWindowAttributes {
+	displayC := (*C.Display)(display)
+	windowC := (C.Window)(window)
+	windowAttributes := new(C.XWindowAttributes)
+	C.XGetWindowAttributes(displayC, windowC, windowAttributes)
+	return windowAttributes
+}
+
+func XMoveResizeWindow(display *Display, window Window, x, y int, width, height uint) {
+	displayC := (*C.Display)(display)
+	windowC := (C.Window)(window)
+	xC := (C.int)(x)
+	yC := (C.int)(y)
+	widthC := (C.uint)(width)
+	heightC := (C.uint)(height)
+	C.XMoveResizeWindow(displayC, windowC, xC, yC, widthC, heightC)
+}
+
+func XKeysymToKeycode(display *Display, keysym uint64) int {
+	displayC := (*C.Display)(display)
+	keysymC := (C.KeySym)(keysym)
+	keycode := C.XKeysymToKeycode(displayC, keysymC)
+	return int(keycode)
+}
+
+func XStringToKeysym(string string) uint64 {
+	stringC := C.CString(string)
+	keysym := C.XStringToKeysym(stringC)
+	C.free(unsafe.Pointer(stringC))
+	return uint64(keysym)
+}
