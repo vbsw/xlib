@@ -19,6 +19,7 @@ type Display C.Display
 type Screen C.Screen
 type Window C.Window
 type Bool C.Bool
+type XWindowAttributes C.XWindowAttributes
 
 func strConcat(a []interface{}) string {
 	str := ""
