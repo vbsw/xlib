@@ -1,3 +1,3 @@
-module github.com/vbsw/xlib
+module github.com/daviseidel/xlib
 
 go 1.13
