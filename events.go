@@ -12,8 +12,6 @@ package xlib
 // #include "xlib.h"
 import "C"
 
-//"unsafe"
-
 const (
 	Expose     = int(C.Expose)
 	KeyPress   = int(C.KeyPress)
@@ -49,6 +47,10 @@ const (
 	OwnerGrabButtonMask      = int64(C.OwnerGrabButtonMask)
 	GrabModeSync             = int(C.GrabModeSync)
 	GrabModeAsync            = int(C.GrabModeAsync)
+	Mod1Mask                 = int64(C.Mod1Mask)
+	Mod2Mask                 = int64(C.Mod2Mask)
+	Mod3Mask                 = int64(C.Mod3Mask)
+	Mod4Mask                 = int64(C.Mod4Mask)
 )
 
 type XEvent interface {

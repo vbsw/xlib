@@ -20,6 +20,7 @@ type Screen C.Screen
 type Window C.Window
 type Bool C.Bool
 type WindowAttributes C.XWindowAttributes
+type Cursor C.Cursor
 
 func strConcat(a []interface{}) string {
 	str := ""
@@ -177,4 +178,19 @@ func XStringToKeysym(string string) uint64 {
 	keysym := C.XStringToKeysym(stringC)
 	C.free(unsafe.Pointer(stringC))
 	return uint64(keysym)
+}
+
+func XGrabButton(display *Display, button int, modifiers int, grab_window Window, owner_events Bool, event_mask int64, pointer_mode int, keyboard_mode int, confine_to Window, cursor Cursor) int {
+	displayC := (*C.Display)(display)
+	buttonC := (C.uint)(button)
+	modifiersC := (C.uint)(modifiers)
+	grab_windowC := (C.Window)(grab_window)
+	owner_eventsC := (C.Bool)(owner_events)
+	event_maskC := (C.uint)(event_mask)
+	pointer_modeC := (C.int)(pointer_mode)
+	keyboard_modeC := (C.int)(keyboard_mode)
+	confine_toC := (C.Window)(confine_to)
+	cursorC := (C.Cursor)(cursor)
+	status := C.XGrabButton(displayC, buttonC, modifiersC, grab_windowC, owner_eventsC, event_maskC, pointer_modeC, keyboard_modeC, confine_toC, cursorC)
+	return int(status)
 }
