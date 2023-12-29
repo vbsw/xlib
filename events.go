@@ -47,8 +47,8 @@ const (
 	PropertyChangeMask       = int64(C.PropertyChangeMask)
 	ColormapChangeMask       = int64(C.ColormapChangeMask)
 	OwnerGrabButtonMask      = int64(C.OwnerGrabButtonMask)
-	GrabModeSync             = int64(C.GrabModeSync)
-	GrabModeAsync            = int64(C.GrabModeAsync)
+	GrabModeSync             = int(C.GrabModeSync)
+	GrabModeAsync            = int(C.GrabModeAsync)
 )
 
 type XEvent interface {
