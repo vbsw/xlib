@@ -19,6 +19,7 @@ const (
 )
 
 const (
+	// All Event masks.
 	NoEventMask              = int64(C.NoEventMask)
 	KeyPressMask             = int64(C.KeyPressMask)
 	KeyReleaseMask           = int64(C.KeyReleaseMask)
@@ -47,10 +48,37 @@ const (
 	OwnerGrabButtonMask      = int64(C.OwnerGrabButtonMask)
 	GrabModeSync             = int(C.GrabModeSync)
 	GrabModeAsync            = int(C.GrabModeAsync)
-	Mod1Mask                 = int64(C.Mod1Mask)
-	Mod2Mask                 = int64(C.Mod2Mask)
-	Mod3Mask                 = int64(C.Mod3Mask)
-	Mod4Mask                 = int64(C.Mod4Mask)
+	Mod1Mask                 = int(C.Mod1Mask)
+	Mod2Mask                 = int(C.Mod2Mask)
+	Mod3Mask                 = int(C.Mod3Mask)
+	Mod4Mask                 = int(C.Mod4Mask)
+	Mod5Mask                 = int(C.Mod5Mask)
+	ShiftMask                = int(C.ShiftMask)
+	LockMask                 = int(C.LockMask)
+	ControlMask              = int(C.ControlMask)
+	AnyModifier              = int(C.AnyModifier)
+	Button1Mask              = int(C.Button1Mask)
+	Button2Mask              = int(C.Button2Mask)
+	Button3Mask              = int(C.Button3Mask)
+	Button4Mask              = int(C.Button4Mask)
+	Button5Mask              = int(C.Button5Mask)
+	ShiftMapIndex            = int(C.ShiftMapIndex)
+	LockMapIndex             = int(C.LockMapIndex)
+	ControlMapIndex          = int(C.ControlMapIndex)
+	Mod1MapIndex             = int(C.Mod1MapIndex)
+	Mod2MapIndex             = int(C.Mod2MapIndex)
+	Mod3MapIndex             = int(C.Mod3MapIndex)
+	Mod4MapIndex             = int(C.Mod4MapIndex)
+	Mod5MapIndex             = int(C.Mod5MapIndex)
+	PointerWindow            = int(C.PointerWindow)
+	InputFocus               = int(C.InputFocus)
+	PointerRoot              = int(C.PointerRoot)
+	AnyPropertyType          = int(C.AnyPropertyType)
+	AnyKey                   = int(C.AnyKey)
+	AnyButton                = int(C.AnyButton)
+	AllTemporary             = int(C.AllTemporary)
+	CurrentTime              = int(C.CurrentTime)
+	NoSymbol                 = int(C.NoSymbol)
 )
 
 type XEvent interface {
@@ -127,6 +155,11 @@ func newXKeyEvent(xeventC *C.XEvent, xeventTypeC C.int) *XKeyEvent {
 	return xKeyEvent
 }
 
-func (this *tEventType) Type() int {
-	return this.typeCode
+func XNextRequest(display *Display) uint64 {
+	displayC := (*C.Display)(display)
+	return uint64(C.XNextRequest(displayC))
+}
+
+func (ev *tEventType) Type() int {
+	return ev.typeCode
 }
