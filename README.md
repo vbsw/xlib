@@ -1,6 +1,6 @@
 # Xlib Binding
 
-[![GoDoc](https://godoc.org/github.com/vbsw/xlib?status.svg)](https://godoc.org/github.com/vbsw/xlib)
+[![GoDoc](https://godoc.org/github.com/vbsw/xlib?status.svg)](https://godoc.org/github.com/daviseidel/xlib)
 
 ## About
 Xlib Binding is a binding of Xlib (version 11, release 6.7) for the programming language Go.
