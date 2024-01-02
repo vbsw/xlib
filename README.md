@@ -8,9 +8,9 @@ Xlib Binding is a binding of Xlib (version 11, release 6.7) for the programming 
 This is a more complete fork of the one by vbsw: <https://github.com/vbsw/xlib>.
 
 ## Copyright
-Copyright 2016 Vitali Baumtrok (vbsw@mailbox.org)
-
 Copyright 2023 Davi Seidel (daviseidel.brandao@gmail.com)
+
+Copyright 2016 Vitali Baumtrok (vbsw@mailbox.org)
 
 Xlib Binding is distributed under the terms of the Boost Software License, version 1.0.
 (See accompanying file LICENSE or copy at <http://www.boost.org/LICENSE_1_0.txt>)
